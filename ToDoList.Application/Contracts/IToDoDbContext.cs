@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,8 @@ namespace ToDoList.Application.Contracts
 {
     public interface IToDoDbContext
     {
-        IQueryable<Board> Boards { get; set; }
-        IQueryable<Domain.Model.Entities.ToDoList> Lists { get; set; }
-        IQueryable<ToDoTask> Tasks { get; set; }
+        DbSet<Board> Boards { get; set; }
+        DbSet<Domain.Model.Entities.ToDoList> Lists { get; set; }
+        DbSet<ToDoTask> Tasks { get; set; }
     }
 }

@@ -22,17 +22,13 @@ namespace ToDoList.Application.Features.Queries.Entities.Lists.GetAll
 
         public async Task<List<ListDto>> Handle(GetListQuery request, CancellationToken cancellationToken)
         {
-            var list = _context.Lists.ToList();
-            list.Add( new Domain.Model.Entities.ToDoList()
-            {
-               BoardId = 1, Id = 4, Name = "Sth"
-            });
-            _context.Lists = list.AsQueryable();
-            var result = _context.Lists.Select(x => new ListDto
-            {
-                Id = x.Id,
-                Name = x.Name
-            }).ToList();
+            var result = await _context.Lists.Select(x =>
+                new ListDto
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                }).ToListAsync(cancellationToken);
+
             return result;
         }
     }
