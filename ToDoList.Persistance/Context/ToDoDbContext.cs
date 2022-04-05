@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoList.Application.Contracts;
+using ToDoList.Domain.Model.Dictionary;
 using ToDoList.Domain.Model.Entities;
 using ToDoList.Persistance.Seed;
 
@@ -17,6 +18,7 @@ namespace ToDoList.Persistance.Context
         public DbSet<Board> Boards { get; set; }
         public DbSet<Domain.Model.Entities.ToDoList> Lists { get; set; }
         public DbSet<ToDoTask> Tasks { get; set; }
+        public DbSet<TaskProgressionLevels> TaskProgressionLevels { get; set; }
 
         public ToDoDbContext([NotNull] DbContextOptions<ToDoDbContext> options) : base(options)
         {
