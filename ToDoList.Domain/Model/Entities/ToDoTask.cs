@@ -14,6 +14,8 @@ namespace ToDoList.Domain.Model.Entities
         public int TaskProgressionLevelsId { get; set; }
         public TaskProgressionLevels Progress { get; set; }
         public int ListId { get; set; }
+        public int Estimation { get; set; }
+        public int Duration { get; set; }
         public ToDoList List { get; set; }
     }
 }

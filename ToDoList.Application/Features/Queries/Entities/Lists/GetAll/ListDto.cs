@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ToDoList.Domain.Model.Entities
+namespace ToDoList.Application.Features.Queries.Entities.Lists.GetAll
 {
-    public class Board
+    public class ListDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        public List<ToDoList> ToDoLists { get; set; }
     }
 }

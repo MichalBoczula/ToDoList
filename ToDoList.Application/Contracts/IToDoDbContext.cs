@@ -10,7 +10,7 @@ namespace ToDoList.Application.Contracts
     public interface IToDoDbContext
     {
         IQueryable<Board> Boards { get; set; }
-        IQueryable<Domain.Model.Entities.ToDoList> ToDoLists { get; set; }
-        IQueryable<ToDoTask> ToDoTasks { get; set; }
+        IQueryable<Domain.Model.Entities.ToDoList> Lists { get; set; }
+        IQueryable<ToDoTask> Tasks { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ToDoList.API.Controllers.Common;
+using ToDoList.Application.Features.Queries.Entities.Lists.GetAll;
 
 namespace ToDoList.API.Controllers
 {
@@ -12,10 +13,11 @@ namespace ToDoList.API.Controllers
     [ApiController]
     public class ToDoController : BaseController
     {
-        //public async Task<ActionResult<ExperienceLevelVm>> GetExperienceLevels()
-        //{
-        //    var vm = await Mediator.Send(new ExperienceLevelQuery());
-        //    return Ok(vm);
-        //}
+        [HttpGet]
+        public async Task<ActionResult<List<ListDto>>> GetExperienceLevels()
+        {
+            var vm = await Mediator.Send(new GetListQuery());
+            return Ok(vm);
+        }
     }
 }
