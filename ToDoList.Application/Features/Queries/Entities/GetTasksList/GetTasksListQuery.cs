@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace ToDoList.Application.Features.Queries.Entities.GetTasksList
 {
-    public class GetTasksListQuery : IRequest<List<TasksListDto>>
+    public class GetTasksListQuery : IRequest<List<TasksListVm>>
     {
-        public int? ListId { get; set; }
     }
 }

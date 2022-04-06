@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ToDoList.API.Controllers.Common;
 using ToDoList.Application.Features.Queries.Entities.GetTasksList;
-using ToDoList.Application.Features.Queries.Entities.Lists.GetAll;
+using ToDoList.Application.Features.Queries.Statistics.CountAverageTime;
 
 namespace ToDoList.API.Controllers
 {
@@ -14,18 +14,18 @@ namespace ToDoList.API.Controllers
     [ApiController]
     public class ToDoController : BaseController
     {
-        [HttpGet]
-        public async Task<ActionResult<List<ListDto>>> GetExperienceLevels()
+        [HttpGet("ToDoBoard")]
+        public async Task<ActionResult<List<TasksListVm>>> GetLists()
         {
-            var vm = await Mediator.Send(new GetListQuery());
+            var vm = await Mediator.Send(new GetTasksListQuery());
             return Ok(vm);
         }
 
-        [HttpGet("ToDoList/{id}")]
-        public async Task<ActionResult<List<TasksListDto>>> GetLists(int id)
+        [HttpGet("Stats/{listName}")]
+        public async Task<ActionResult<CountAverageTimeQueryVm>> GetExperienceLevels(string listName)
         {
-            var vm = await Mediator.Send(new GetTasksListQuery() { ListId = id});
-            return Ok(vm);
+            var vm = await Mediator.Send(new CountAverageTimeQuery() { ListName = listName});
+            return vm is null ? NotFound() : Ok(vm);
         }
     }
 }
