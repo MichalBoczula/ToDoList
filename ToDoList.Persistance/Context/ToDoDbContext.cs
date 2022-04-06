@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using ToDoList.Application.Contracts;
 using ToDoList.Domain.Model.Dictionary;
@@ -31,6 +32,10 @@ namespace ToDoList.Persistance.Context
             modelBuilder.CreateListsSeed();
             modelBuilder.CreateTasksSeed();
             modelBuilder.CreateTaskProgressionLevelsSeed();
+        }
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            return await base.SaveChangesAsync(cancellationToken);
         }
     }
 }
